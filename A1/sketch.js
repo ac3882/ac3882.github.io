@@ -10,7 +10,7 @@ function draw() {
   rect(20, 20, 60, map(second(), 0, 60, 0, 400));
 
   push(); // Start a new drawing state
-  scale(11, 11); // Use function hour() directly to apply scale
+  scale(hour()/2, hour()/2); // Use function hour() to apply scale, div 2 to keep ellipse inside canvas
   ellipse(56, 46, 55, 55);
   pop(); // Restore original state (scale, specifically)
 
