@@ -31,6 +31,7 @@ function draw(){
   fill(0,0,255,150) // blue
   triangle(x1,y1,x2,y2,x2,map(h, 0, 24, y2, height));
 
-  // Example print statement
+  // Example print statements (they do exactly the same thing, use 1 at a time)
   // console.log(map(s, 0, 60, 0, width), height);
+  // print(map(s, 0, 60, 0, width), height);
 }
