@@ -10,18 +10,18 @@ function setup(){
   // Set the random positions for this session (so balls merely show/hide,
   // they don't actually move in this clock.)
   for (var i = 0; i < 24; i++){
-    hour_xs.push(random(width));
-    hour_ys.push(random(height));
+    append(hour_xs, random(width));
+    append(hour_ys, random(height));
   }
 
   for (var i = 0; i < 60; i++){
-    minute_xs.push(random(width));
-    minute_ys.push(random(height));
+    append(minute_xs, random(width));
+    append(minute_ys, random(height));
   }
 
   for (var i = 0; i < 60; i++){
-    second_xs.push(random(width));
-    second_ys.push(random(height));
+    append(second_xs, random(width));
+    append(second_ys, random(height));
   }
 }
 
