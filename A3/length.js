@@ -57,6 +57,8 @@ function draw() {
 
 function extractHeadlines() {
 
+  // console.log(nytResponse); // take a look at the full API response structure
+
   for (var i = 0; i < nytResponse.results.length; i++) {
     var h = nytResponse.results[i].title;
     // besides .title, other text data available to you include:
