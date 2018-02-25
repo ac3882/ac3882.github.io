@@ -1,0 +1,146 @@
+Order,Property Id,Borough,Primary Property Type - Self Selected,DOF Gross Floor Area,Water Use (All Water Sources) (kgal),Water Intensity (All Water Sources) (gal/ft²),Converted Property Type
+1032,3284404,Manhattan,Office,102593,0.00,0.00,Office
+1168,5871422,Manhattan,Office,60720,0.00,0.00,Office
+1310,5865116,Manhattan,Worship Facility,60720,0.00,0.00,Other
+1321,4393079,Manhattan,Office,109723,0.00,0.00,Office
+1366,3522266,Manhattan,Urgent Care/Clinic/Other Outpatient,112332,0.00,0.00,Medical
+1633,5830288,Manhattan,Multifamily Housing,60720,0.00,0.00,Residential
+1635,5830296,Manhattan,Multifamily Housing,60720,0.00,0.00,Residential
+2019,2669784,Manhattan,Office,170548,0.00,0.00,Office
+2217,3530087,Manhattan,Office,112332,0.00,0.00,Office
+2254,2667339,Manhattan,Office,170548,0.00,0.00,Office
+2897,4403963,Manhattan,Other,577654,0.00,0.00,Other
+3253,4409949,Manhattan,Medical Office,219845,0.00,0.00,Medical
+3388,5220576,Manhattan,Multifamily Housing,60720,0.00,0.00,Residential
+3737,5833057,Manhattan,Office,60720,0.00,0.00,Office
+3751,5848135,Manhattan,Office,60720,0.00,0.00,Office
+4392,2655597,Manhattan,Hospital (General Medical & Surgical),170548,0.00,0.00,Medical
+4831,2804810,Manhattan,Office,146583,0.00,0.00,Office
+6223,5830754,Manhattan,Multifamily Housing,60720,0.00,0.00,Residential
+1477,5709749,Manhattan,Office,60720,1.00,0.02,Office
+6294,4406960,Manhattan,Multifamily Housing,577654,3.30,0.04,Residential
+2993,5236735,Manhattan,Parking,60720,4.50,0.07,Other
+2947,2611600,Manhattan,Self-Storage Facility,170548,11.80,0.08,Commercial
+2022,2651962,Manhattan,Office,170548,13.60,0.03,Office
+2760,2772636,Manhattan,Office,146583,13.70,0.04,Office
+3153,4628362,Manhattan,Multifamily Housing,1085148,15.00,0.19,Residential
+460,2782299,Manhattan,Multifamily Housing,146583,15.90,0.29,Residential
+4561,2957229,Manhattan,Self-Storage Facility,84823,20.90,0.28,Commercial
+1692,2953242,Manhattan,Office,84823,21.90,0.17,Office
+5210,3663489,Manhattan,Non-Refrigerated Warehouse,112332,22.00,0.31,Industrial
+5406,2732753,Manhattan,Multifamily Housing,146583,23.40,0.14,Residential
+6199,3501355,Manhattan,Multifamily Housing,102593,23.60,0.41,Residential
+2328,2642019,Manhattan,Office,170548,35.00,0.27,Office
+2365,5867389,Manhattan,Parking,60720,38.60,0.76,Other
+3551,4044503,Manhattan,Multifamily Housing,109723,40.70,0.54,Residential
+1580,5027377,Manhattan,Hotel,60720,48.20,0.47,Commercial
+1430,4936244,Manhattan,Parking,,50.90,5.09,Other
+934,3500644,Manhattan,Other,102593,55.20,0.53,Other
+1479,4832241,Manhattan,Office,,59.10,0.83,Office
+4156,2633765,Manhattan,Hotel,170548,60.10,1.05,Commercial
+1547,2955755,Manhattan,Parking,84823,64.80,0.78,Other
+5816,3120806,Manhattan,Multifamily Housing,102593,74.80,0.84,Residential
+4104,4399367,Manhattan,Parking,109723,86.70,1.31,Other
+903,2677871,Manhattan,Other,170548,89.80,0.68,Other
+1436,2587768,Manhattan,Self-Storage Facility,170548,91.00,0.79,Commercial
+611,3058791,Manhattan,Office,84823,91.80,0.15,Office
+5703,2587389,Manhattan,Self-Storage Facility,170548,98.30,1.14,Commercial
+5365,2587543,Manhattan,Self-Storage Facility,170548,108.80,0.96,Commercial
+2092,2955753,Manhattan,Parking,84823,115.10,1.66,Other
+4482,2811408,Manhattan,Non-Refrigerated Warehouse,303214,115.40,0.97,Industrial
+1417,3926275,Manhattan,Office,112332,118.70,1.13,Office
+982,2587536,Manhattan,Self-Storage Facility,170548,123.40,2.02,Commercial
+889,4995008,Manhattan,Hotel,60720,126.90,1.93,Commercial
+5284,3289113,Manhattan,Multifamily Housing,102593,150.00,2.91,Residential
+2443,4399348,Manhattan,Parking,109723,155.60,1.92,Other
+3640,3296567,Manhattan,Hotel,102593,155.60,0.78,Commercial
+561,1423089,Manhattan,Office,,156.20,0.14,Office
+3357,2669246,Manhattan,Non-Refrigerated Warehouse,170548,156.20,1.65,Industrial
+6168,2636880,Manhattan,Multifamily Housing,170548,166.40,2.46,Residential
+891,4612541,Manhattan,Parking,1085148,181.80,3.00,Other
+5181,5866134,Manhattan,Parking,60720,200.90,0.33,Other
+5779,4393104,Manhattan,Multifamily Housing,109723,214.20,3.62,Residential
+5246,4047206,Manhattan,Multifamily Housing,109723,219.00,2.58,Residential
+26,4988688,Manhattan,Multifamily Housing,60720,231.90,4.22,Residential
+33,3111973,Manhattan,Multifamily Housing,84823,237.90,1.35,Residential
+589,4401415,Manhattan,Multifamily Housing,109723,239.20,3.70,Residential
+6228,2848324,Manhattan,Multifamily Housing,84823,246.50,3.66,Residential
+1466,2587268,Manhattan,Self-Storage Facility,170548,249.60,1.16,Commercial
+4560,2587434,Manhattan,Self-Storage Facility,170548,258.10,1.34,Commercial
+2986,2654634,Manhattan,Other,170548,266.20,1.16,Other
+1674,2694097,Manhattan,Office,136070,273.80,3.59,Office
+2956,2715799,Manhattan,Multifamily Housing,146583,278.10,5.50,Residential
+1963,4410715,Manhattan,Office,219845,281.20,5.51,Office
+4865,4952565,Manhattan,Multifamily Housing,60720,284.80,2.01,Residential
+1434,2689400,Manhattan,Non-Refrigerated Warehouse,136070,302.60,3.20,Industrial
+2911,2728991,Manhattan,Office,146583,304.70,4.69,Office
+771,2805982,Manhattan,Non-Refrigerated Warehouse,146583,306.50,5.47,Industrial
+6085,3513045,Manhattan,Multifamily Housing,102593,306.80,5.88,Residential
+2243,2539064,Manhattan,Office,,306.90,5.54,Office
+1548,4955225,Manhattan,Other,60720,315.50,4.99,Other
+1945,2539063,Manhattan,Office,,339.20,3.14,Office
+1949,2799290,Manhattan,Multifamily Housing,146583,339.60,6.08,Residential
+830,2612655,Manhattan,Office,170548,342.80,6.62,Office
+1233,3499366,Manhattan,Office,102593,360.50,3.03,Office
+3571,2815138,Manhattan,Office,84823,377.00,5.62,Office
+2114,2703161,Manhattan,Office,136070,379.90,6.48,Office
+1878,3265358,Manhattan,Mixed Use Property,102593,381.80,2.98,Mixed Use
+1323,2739916,Manhattan,Office,146583,382.00,6.40,Office
+4343,2669644,Manhattan,Multifamily Housing,170548,387.50,6.55,Residential
+1052,2665948,Manhattan,Multifamily Housing,170548,400.10,7.09,Residential
+1415,3111362,Manhattan,Office,84823,409.00,7.90,Office
+1848,5055925,Manhattan,Office,60720,413.40,7.32,Office
+1475,5765243,Manhattan,Office,60720,417.00,8.04,Office
+1050,4411784,Manhattan,Multifamily Housing,219845,417.40,7.26,Residential
+1056,4401435,Manhattan,Multifamily Housing,109723,418.90,6.41,Residential
+5363,2803466,Manhattan,Multifamily Housing,146583,425.10,5.97,Residential
+1028,5236465,Manhattan,Retail Store,60720,431.90,6.84,Commercial
+5112,2715968,Manhattan,Multifamily Housing,146583,437.60,4.70,Residential
+1234,3980446,Manhattan,Office,112332,448.90,7.48,Office
+6274,4626436,Manhattan,Self-Storage Facility,1085148,450.50,1.45,Commercial
+136,2866471,Manhattan,College/University,84823,462.90,3.60,Education
+1585,2720422,Manhattan,Office,146583,468.30,8.61,Office
+4894,5860951,Manhattan,Medical Office,60720,470.50,7.41,Medical
+2144,4845118,Manhattan,Office,,475.80,9.33,Office
+2989,5791918,Manhattan,Non-Refrigerated Warehouse,60720,478.80,4.66,Industrial
+1072,4412241,Manhattan,Other,219845,497.00,6.21,Other
+2188,2814410,Manhattan,Retail Store,165436,511.80,5.80,Commercial
+90,2977360,Manhattan,Multifamily Housing,84823,517.40,9.68,Residential
+2119,3108160,Manhattan,Office,84823,518.00,9.83,Office
+1907,2565227,Manhattan,Office,170548,519.90,5.07,Office
+5028,2806509,Manhattan,Multifamily Housing,146583,521.50,4.04,Residential
+1055,2876343,Manhattan,Multifamily Housing,84823,552.80,7.42,Residential
+1174,4410156,Manhattan,Multifamily Housing,219845,556.70,9.09,Residential
+1367,2940676,Manhattan,Office,84823,559.40,9.42,Office
+1319,2827111,Manhattan,Office,84823,567.20,9.54,Office
+1784,2637247,Manhattan,College/University,170548,580.00,7.49,Education
+2097,3108929,Manhattan,Office,84823,585.70,9.01,Office
+1610,4409211,Manhattan,Office,219845,587.20,9.87,Office
+3597,5869387,Manhattan,Mixed Use Property,60720,598.90,3.10,Mixed Use
+2400,3249202,Manhattan,Office,102593,601.10,5.08,Office
+3408,2715781,Manhattan,Multifamily Housing,146583,605.20,9.79,Residential
+1162,5245800,Manhattan,Office,60720,608.20,11.65,Office
+2418,4848996,Manhattan,Multifamily Housing,,614.90,8.20,Residential
+2529,2429835,Manhattan,College/University,,617.40,10.47,Education
+2988,4733225,Manhattan,Retail Store,,624.60,11.90,Commercial
+4018,4399362,Manhattan,Parking,109723,624.60,10.07,Other
+4480,4803003,Manhattan,Office,,627.80,10.76,Office
+3004,2909090,Manhattan,Other,84823,629.30,5.26,Other
+559,2273786,Manhattan,Office,,633.90,5.88,Office
+1899,2679992,Manhattan,Office,136070,637.20,11.18,Office
+2098,4044728,Manhattan,Office,109723,638.80,10.62,Office
+2211,4340553,Manhattan,Office,109723,642.20,10.83,Office
+2996,2597503,Manhattan,Office,170548,642.60,6.76,Office
+1169,4395921,Manhattan,Multifamily Housing,109723,651.50,8.67,Residential
+1661,2667105,Manhattan,Office,170548,665.50,11.59,Office
+1978,5055947,Manhattan,Office,60720,669.90,10.89,Office
+1111,4162364,Manhattan,Multifamily Housing,109723,675.60,12.87,Residential
+1946,4040432,Manhattan,Office,109723,680.60,8.84,Office
+1378,4414278,Manhattan,Multifamily Housing,115396,681.60,11.74,Residential
+909,3529281,Manhattan,Multifamily Housing,112332,683.70,2.93,Residential
+1177,4134731,Manhattan,College/University,109723,689.70,7.97,Education
+3599,3119773,Manhattan,Office,102593,696.50,12.63,Office
+1145,4854230,Manhattan,Office,,705.10,7.54,Office
+3679,5034927,Manhattan,Office,60720,712.00,12.35,Office
+3584,4942130,Manhattan,Office,57824,715.60,10.78,Office
+1720,2868795,Manhattan,Office,84823,720.50,9.73,Office

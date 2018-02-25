@@ -1,0 +1,48 @@
+Borough,Converted Property Type,SUM of Water Use (All Water Sources) (kgal)
+Bronx,Commercial,23746.90
+Bronx,Education,34588.30
+Bronx,Industrial,55528.90
+Bronx,Medical,53971.70
+Bronx,Mixed Use,3553.10
+Bronx,Office,67095.80
+Bronx,Other,4650042.20
+Bronx,Residential,13441665.00
+Bronx Total,,18330191.90
+Brooklyn,Commercial,214237.70
+Brooklyn,Education,147841.20
+Brooklyn,Government,12184.30
+Brooklyn,Industrial,118828.00
+Brooklyn,Medical,75128.50
+Brooklyn,Mixed Use,15493.50
+Brooklyn,Office,215028.00
+Brooklyn,Other,336424.00
+Brooklyn,Residential,18789317.40
+Brooklyn Total,,19924482.60
+Manhattan,Commercial,8936331.10
+Manhattan,Education,474372.20
+Manhattan,Industrial,99087.00
+Manhattan,Medical,292512.50
+Manhattan,Mixed Use,103105.50
+Manhattan,Office,7097162.70
+Manhattan,Other,449622.80
+Manhattan,Residential,32741598.60
+Manhattan Total,,50193792.40
+Queens,Commercial,2048471.60
+Queens,Education,49137.70
+Queens,Government,9052.20
+Queens,Industrial,777255.10
+Queens,Medical,117409.40
+Queens,Mixed Use,61908.50
+Queens,Office,504269.90
+Queens,Other,410750.40
+Queens,Residential,21146462.20
+Queens Total,,25124717.00
+Staten Island,Commercial,141327.30
+Staten Island,Education,4776.70
+Staten Island,Industrial,3541.60
+Staten Island,Medical,64215.50
+Staten Island,Mixed Use,13583.00
+Staten Island,Office,23080.30
+Staten Island,Other,1438959.70
+Staten Island,Residential,274516.50
+Staten Island Total,,1964000.60
