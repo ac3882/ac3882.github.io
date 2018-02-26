@@ -2,8 +2,7 @@
 // https://docs.google.com/spreadsheets/d/1A_FmxvY46SKQPS1rcxgacKdTWWmETXXX4NM1ItBHFxc/edit?usp=sharing
 
 // data variables
-var waterPerBoro; // use as Dictionary; see https://p5js.org/reference/#/p5.TypedDict
-var boroNames = []; // string array
+var waterPerBoro = {}; // use as object; see https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
 var waterNYCSum = 0;
 
 // drawing constants
@@ -28,17 +27,20 @@ function draw() {
   var startX = margin;
   var startY = margin*5;
 
-  for (var i=0; i<boroNames.length; i++) {
+  var boros = Object.keys(waterPerBoro);
+  for (var i=0; i<boros.length; i++) {
+  // javascript objects offer a handy for-loop like `for (var boro in waterPerBoro) {`
+  // but I choose a classic for-loop here to use the index i for colors
 
     // math first
-    var percentWater = waterPerBoro.get(boroNames[i])/waterNYCSum;
+    var percentWater = waterPerBoro[boros[i]]/waterNYCSum;
     var rectWidth = map(percentWater, 0, 1, 0, width-margin*2);
 
     if (mouseInBounds(startX, startY, startX+rectWidth, startY+rectHeight)) {
       // draw label
       fill(0);
       textSize(labelTextSize);
-      text(boroNames[i], startX, startY - labelTextSize);
+      text(boros[i], startX, startY - labelTextSize);
 
       // setup for hover rectangle
       fill(colorsDark[i]);
@@ -67,29 +69,16 @@ function loadData() {
     // for sake of demo, ignore "total" rows in csv and do the math
     if (!boros[i].includes("Total")) {
 
-      // if dictionary not yet initialized
-      if (!waterPerBoro) {
-        waterPerBoro = createNumberDict(boros[i], waterUse[i]);
-
+      // if running total already exists in data object
+      if (waterPerBoro[boros[i]]) {
+        prevSum = waterPerBoro[boros[i]];
       } else {
-
-        // First, add name to list of boros
-        if (!boroNames.includes(boros[i])) {
-          append(boroNames, boros[i])
-        }
-
-        // Then sum # gallons used to per boro dictionary
-        var prevSum = 0;
-        if (waterPerBoro.hasKey(boros[i])) {
-          prevSum = waterPerBoro.get(boros[i]);
-        }
-        waterPerBoro.set(boros[i], int(prevSum) + int(waterUse[i]));
-
-        // Finally, sum # gallons to total NYC count
-        waterNYCSum += int(waterUse[i]);
+        prevSum = 0;
       }
+      waterPerBoro[boros[i]] = int(prevSum) + int(waterUse[i]);
 
+      // also sum # gallons to total NYC count
+      waterNYCSum += int(waterUse[i]);
     }
-
   } // end for-loop
 }
