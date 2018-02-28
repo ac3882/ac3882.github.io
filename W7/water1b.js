@@ -1,194 +1,104 @@
-// Example of Google Sheet Data restructuring:
-// https://docs.google.com/spreadsheets/d/1A_FmxvY46SKQPS1rcxgacKdTWWmETXXX4NM1ItBHFxc/edit?usp=sharing
-
 // data variables
-var waterPerBoro = {}; // use as object; see https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
-var waterNYCSum = 0;
-
-// detail view data variables
-var waterPerPropType;
-var waterBoroSum; // total H2O consumption of whichever boro is active
-
-// state variables
-var state; // name of actively selected boro
+var waterData = {}; // use as object; see https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
+var maxWater = [];
+var minWater = [];
 
 // drawing constants
-var colors = [ "#8E9E82", "#CACCB6", "#F2F0DF", "#A9C1D9", "#607890" ];
-var colorsDark = [ "#535f4a", "#979b70", "#d0c88a", "#5786b5", "#303d49" ];
-var colors2 = [ "#09436a", "#0c5789", "#0d6099", "#117ec8", "#2099ec", "#4faff0", "#7ec4f4", "#addaf8", "#dceffc"];
-var colors2Hilite = "yellow";
-var margin = 20;
-var rectHeight = 20;
+var dotW = 8;
+var dotXSpacing = 50;
+var colors = { Manhattan: "#535f4a", Brooklyn: "#979b70", Queens: "#d0c88a", Bronx: "#5786b5", "Staten Island": "#303d49" };
+var margin = 50;
 var labelTextSize = 18;
-var trapezoidColor = "#eee";
 
-// drawing variables
-var trapX1, trapX2; // depends on which boro is active
-var topBarBounds = {}; // maps boro name to [x1, y1, x2, y2] coordinates,
-                       // so we know what was clicked on mousePress
-
+// state variables
+var state = 0; // sums = 0, avgs = 1
+var animFrame = 0;
+var maxAnimFrame = 20;
 
 function preload(){
-  table = loadTable('2016 NYC Water Use - SUM per boro per proptype.csv', 'csv', 'header');
+  table = loadTable('2015-2016 NYC Water Use - SUMAVG per boro.csv', 'csv', 'header');
 }
 
-
 function setup() {
-  createCanvas(800, 400);
+  button = createButton('toggle');
+  button.mousePressed(toggleState);
+
+  createCanvas(600, 400);
   loadData();
+  frameRate(30);
+
+  textSize(labelTextSize);
   noStroke();
 }
 
-
 function draw() {
   background(255);
-
-  // --- top-level bar ---
   var startX = margin;
-  var startY = margin*5;
-  var boros = Object.keys(waterPerBoro);
-  for (var i=0; i<boros.length; i++) {
 
-    // math first
-    var percentWater = waterPerBoro[boros[i]]/waterNYCSum;
-    var rectWidth = map(percentWater, 0, 1, 0, width-margin*2);
+  for (var boro in waterData) {
 
-    // define topBarBounds if it wasn't defined already (only need to do it once)
-    if (!topBarBounds[boros[i]]) {
-      topBarBounds[boros[i]] = [startX, startY, startX+rectWidth, startY+rectHeight];
-    }
+    startX = margin;
+    var i = state;
 
-    if (state == boros[i] || mouseInBounds(startX, startY, startX+rectWidth, startY+rectHeight)) {
-      // draw label
-      fill(0);
-      textSize(labelTextSize);
-      text(boros[i], startX, startY - labelTextSize);
-
-      // setup for trapezoid
-      if (state) {
-        trapX1 = startX;
-        trapX2 = startX + rectWidth;
-      }
-
-      // setup for hover rectangle
-      fill(colorsDark[i]);
+    if (isAnimating()) {
+      var ori = (state == 0) ? 1 : 0; // origin = the other state
+      var firstYori = map(waterData[boro][ori], minWater[ori], maxWater[ori], height-margin, margin);
+      var firstYdest = map(waterData[boro][i], minWater[i], maxWater[i], height-margin, margin);
+      var firstY = firstYdest + (firstYori - firstYdest) * percentAnim();
+      var secondYori = map(waterData[boro][ori+2], minWater[ori+2], maxWater[ori+2], height-margin, margin);
+      var secondYdest = map(waterData[boro][i+2], minWater[i+2], maxWater[i+2], height-margin, margin);
+      var secondY = secondYdest + (secondYori - secondYdest) * percentAnim();
     } else {
-      // normal rectangles with no mouse
-      fill(colors[i]);
+      var firstY = map(waterData[boro][i], minWater[i], maxWater[i], height-margin, margin);
+      var secondY = map(waterData[boro][i+2], minWater[i+2], maxWater[i+2], height-margin, margin);
     }
-    rect(startX, startY, rectWidth, rectHeight);
 
-    // setup for next rectangle
-    startX += rectWidth;
+    stroke("orange");
+    line(startX, firstY, startX+dotXSpacing, secondY)
+    noStroke();
+
+    fill(colors[boro]);
+    ellipse(startX, firstY, dotW, dotW);
+    startX += dotXSpacing;
+    ellipse(startX, secondY, dotW, dotW);
+
+    fill(0);
+    startX += dotXSpacing;
+    text(boro, startX, secondY+textDescent());
   }
 
-  // --- detail-level bars ---
-  if (state) {
-    loadDetailData(state);
-
-    var nycStartY = startY+rectHeight;
-    var startX = margin;
-    var startY = margin*5*2;
-
-    // draw trapezoid connecting top-level to detail view
-    fill(trapezoidColor);
-    quad(trapX1, nycStartY, trapX2, nycStartY, width-margin, startY, startX, startY);
-
-    // start drawing detail bar
-    var propType = Object.keys(waterPerPropType);
-    for (var i=0; i<propType.length; i++) {
-
-      // math first
-      var percentWater = waterPerPropType[propType[i]]/waterBoroSum;
-      var rectWidth = map(percentWater, 0, 1, 0, width-margin*2);
-
-      if (mouseInBounds(startX, startY, startX+rectWidth, startY+rectHeight)) {
-        // draw label
-        fill(0);
-        textSize(propType);
-        text(propType[i], startX, startY - labelTextSize);
-
-        // setup for hover rectangle
-        fill(colors2Hilite);
-      } else {
-        // normal rectangles with no mouse
-        fill(colors2[i]);
-      }
-      rect(startX, startY, rectWidth, rectHeight);
-
-      // setup for next rectangle
-      startX += rectWidth;
-    }
+  if (isAnimating()) {
+    animFrame--;
   }
 }
 
-
-function mouseInBounds(x1, y1, x2, y2) {
-  return (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2);
+function toggleState() {
+  state = (state == 0) ? 1 : 0; // shorthand if-statement, aka "inline if"
+  animFrame = maxAnimFrame;
 }
 
-
-function mousePressed() {
-  for (var boro in topBarBounds) {
-    var b = topBarBounds[boro];
-    if (mouseInBounds(b[0], b[1], b[2], b[3])) {
-      state = boro;
-      break; // forces loop to stop even if not finished
-    }
-  }
-  // prevent browser default
-  return false;
+function percentAnim() {
+  // represents distance to final destination; return 0% if not animating
+  return (animFrame / maxAnimFrame);
 }
 
+function isAnimating() {
+  return (animFrame != 0);
+}
 
 function loadData() {
-  var waterUse = table.getColumn("SUM of Water Use (All Water Sources) (kgal)");
+  // convert to format { borough: [ 99, 99, 99, 99 ]}
   var boros = table.getColumn("Borough");
+  var sum2016 = table.getColumn("2016 SUM of Water Use (kgal)");
+  var avg2016 = table.getColumn("2016 Avg per boro (gal/sqft)");
+  var sum2015 = table.getColumn("2015 SUM of Water Use (kgal)");
+  var avg2015 = table.getColumn("2015 Avg per boro (gal/sqft)");
 
   // loadTable automatically ignores header row so we can start index at 0
-  for (var i=0; i<waterUse.length; i++) {
+  for (var i=0; i<boros.length; i++) {
+    waterData[boros[i]] = [ sum2015[i], avg2015[i], sum2016[i], avg2016[i] ];
+  }
 
-    // for sake of demo, ignore "total" rows in csv and do the math
-    if (!boros[i].includes("Total")) {
-
-      // if running total already exists in data object
-      if (waterPerBoro[boros[i]]) {
-        prevSum = waterPerBoro[boros[i]];
-      } else {
-        prevSum = 0;
-      }
-      waterPerBoro[boros[i]] = int(prevSum) + int(waterUse[i]);
-
-      // also sum # gallons to total NYC count
-      waterNYCSum += int(waterUse[i]);
-    }
-  } // end for-loop
-}
-
-
-function loadDetailData(selectedBoro) {
-  // note: unlike for the top-level bar, we handle detail bar data "on the fly"
-  // thus, first reset all detail data variables to handle whichever boro is selected
-  waterPerPropType = {};
-  waterBoroSum = 0;
-
-  // go through the CSV again, this time also get property type and ignore
-  // any rows that don't match our `selectedBoro` parameter
-  var waterUse = table.getColumn("SUM of Water Use (All Water Sources) (kgal)");
-  var boros = table.getColumn("Borough");
-  var propTypes = table.getColumn("Converted Property Type");
-
-  for (var i=0; i<waterUse.length; i++) {
-    // only do something with the row if it's in the boro we want
-    if (boros[i] == selectedBoro) {
-
-      // we don't need to calculate running total here since we
-      // know the CSV only contains one row per unique combination
-      // of propertyType-borough
-      waterPerPropType[propTypes[i]] = int(waterUse[i]);
-
-      // also sum # gallons to total NYC count
-      waterBoroSum += int(waterUse[i]);
-    }
-  } // end for-loop
+  maxWater = [ max(sum2015), max(avg2015), max(sum2016), max(avg2016) ];
+  minWater = [ min(sum2015), min(avg2015), min(sum2016), min(avg2016) ];
 }

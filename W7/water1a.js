@@ -1,84 +1,77 @@
-// Example of Google Sheet Data restructuring:
-// https://docs.google.com/spreadsheets/d/1A_FmxvY46SKQPS1rcxgacKdTWWmETXXX4NM1ItBHFxc/edit?usp=sharing
-
 // data variables
-var waterPerBoro = {}; // use as object; see https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
-var waterNYCSum = 0;
+var waterData = {}; // use as object; see https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
+var maxWater = [];
+var minWater = [];
 
 // drawing constants
-var colors = [ "#8E9E82", "#CACCB6", "#F2F0DF", "#A9C1D9", "#607890" ];
-var colorsDark = [ "#535f4a", "#979b70", "#d0c88a", "#5786b5", "#303d49" ];
-var margin = 20;
-var rectHeight = 20;
+var dotW = 8;
+var dotXSpacing = 50;
+var colors = { Manhattan: "#535f4a", Brooklyn: "#979b70", Queens: "#d0c88a", Bronx: "#5786b5", "Staten Island": "#303d49" };
+var margin = 50;
 var labelTextSize = 18;
 
+// state variables
+var state = 0; // sums = 0, avgs = 1
+
 function preload(){
-  table = loadTable('2016 NYC Water Use - SUM per boro per proptype.csv', 'csv', 'header');
+  table = loadTable('2015-2016 NYC Water Use - SUMAVG per boro.csv', 'csv', 'header');
 }
 
 function setup() {
-  createCanvas(800, 400);
+  button = createButton('toggle');
+  button.mousePressed(toggleState);
+
+  createCanvas(600, 400);
   loadData();
+
+  textSize(labelTextSize);
   noStroke();
 }
 
 function draw() {
   background(255);
   var startX = margin;
-  var startY = margin*5;
 
-  var boros = Object.keys(waterPerBoro);
-  for (var i=0; i<boros.length; i++) {
-  // javascript objects offer a handy for-loop like `for (var boro in waterPerBoro) {`
-  // but I choose a classic for-loop here to use the index i for colors
+  for (var boro in waterData) {
 
-    // math first
-    var percentWater = waterPerBoro[boros[i]]/waterNYCSum;
-    var rectWidth = map(percentWater, 0, 1, 0, width-margin*2);
+    startX = margin;
 
-    if (mouseInBounds(startX, startY, startX+rectWidth, startY+rectHeight)) {
-      // draw label
-      fill(0);
-      textSize(labelTextSize);
-      text(boros[i], startX, startY - labelTextSize);
+    var i = state;
+    var firstY = map(waterData[boro][i], minWater[i], maxWater[i], height-margin, margin);
+    var secondY = map(waterData[boro][i+2], minWater[i+2], maxWater[i+2], height-margin, margin);
 
-      // setup for hover rectangle
-      fill(colorsDark[i]);
-    } else {
-      // normal rectangles with no mouse
-      fill(colors[i]);
-    }
-    rect(startX, startY, rectWidth, rectHeight);
+    stroke("orange");
+    line(startX, firstY, startX+dotXSpacing, secondY)
+    noStroke();
 
-    // setup for next rectangle
-    startX += rectWidth;
+    fill(colors[boro]);
+    ellipse(startX, firstY, dotW, dotW);
+    startX += dotXSpacing;
+    ellipse(startX, secondY, dotW, dotW);
+
+    fill(0);
+    startX += dotXSpacing;
+    text(boro, startX, secondY+textDescent());
   }
 }
 
-function mouseInBounds(x1, y1, x2, y2) {
-  return (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2);
+function toggleState() {
+  state = (state == 0) ? 1 : 0; // shorthand if-statement, aka "inline if"
 }
 
 function loadData() {
-  var waterUse = table.getColumn("SUM of Water Use (All Water Sources) (kgal)");
+  // convert to format { borough: [ 99, 99, 99, 99 ]}
   var boros = table.getColumn("Borough");
+  var sum2016 = table.getColumn("2016 SUM of Water Use (kgal)");
+  var avg2016 = table.getColumn("2016 Avg per boro (gal/sqft)");
+  var sum2015 = table.getColumn("2015 SUM of Water Use (kgal)");
+  var avg2015 = table.getColumn("2015 Avg per boro (gal/sqft)");
 
   // loadTable automatically ignores header row so we can start index at 0
-  for (var i=0; i<waterUse.length; i++) {
+  for (var i=0; i<boros.length; i++) {
+    waterData[boros[i]] = [ sum2015[i], avg2015[i], sum2016[i], avg2016[i] ];
+  }
 
-    // for sake of demo, ignore "total" rows in csv and do the math
-    if (!boros[i].includes("Total")) {
-
-      // if running total already exists in data object
-      if (waterPerBoro[boros[i]]) {
-        prevSum = waterPerBoro[boros[i]];
-      } else {
-        prevSum = 0;
-      }
-      waterPerBoro[boros[i]] = int(prevSum) + int(waterUse[i]);
-
-      // also sum # gallons to total NYC count
-      waterNYCSum += int(waterUse[i]);
-    }
-  } // end for-loop
+  maxWater = [ max(sum2015), max(avg2015), max(sum2016), max(avg2016) ];
+  minWater = [ min(sum2015), min(avg2015), min(sum2016), min(avg2016) ];
 }
