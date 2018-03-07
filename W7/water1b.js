@@ -1,3 +1,12 @@
+//
+// Example: NYC H2O Consumption
+// by Agnes Chang. 2018.
+// http://agneschang.net/gsapp-dataviz-archhum/
+//
+// This example uses NYC Open Data 2017 Water consumption (2016 data)
+// per borough to demonstrate animated between two dimensions on the same axis.
+//
+
 // data variables
 var waterData = {}; // use as object; see https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
 var maxWater = [];

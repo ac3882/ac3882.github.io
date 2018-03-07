@@ -1,3 +1,12 @@
+//
+// Example: In-class demo: NYTimes Headlines before highlighting words
+// by Agnes Chang. 2018.
+// http://agneschang.net/gsapp-dataviz-archhum/
+//
+// This example uses NYT's Top Stories API and visualizes the relative
+// length of story headlines.
+//
+
 var headlines = [];
 
 function preload() {

@@ -1,3 +1,12 @@
+//
+// Example: NYC H2O Consumption
+// by Agnes Chang. 2018.
+// http://agneschang.net/gsapp-dataviz-archhum/
+//
+// This example uses NYC Open Data 2017 Water consumption (2016 data)
+// per borough to demonstrate highlight on mouseover.
+//
+
 // Example of Google Sheet Data restructuring:
 // https://docs.google.com/spreadsheets/d/1A_FmxvY46SKQPS1rcxgacKdTWWmETXXX4NM1ItBHFxc/edit?usp=sharing
 

@@ -1,7 +1,13 @@
+//
+// Example: NYTimes Headlines with Interactivity
+// by Agnes Chang. 2018.
+// http://agneschang.net/gsapp-dataviz-archhum/
+//
 // Letters adapted from https://processing.org/examples/letters.html
-// ---
+//
 // This example uses NYT's Top Stories API and visualizes the relative
 // frequency of letters occurring in story headlines.
+//
 
 // Declare global variables that we'll want to access throughout program.
 var myFont;
