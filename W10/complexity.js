@@ -1,15 +1,11 @@
 //
-// Example: NYC H2O Consumption
+// Example: Complexity: NYC H2O Consumption
 // by Agnes Chang. 2018.
 // http://agneschang.net/gsapp-dataviz-archhum/
 //
-// This example uses NYC Open Data 2017 Water consumption (2016 data)
-// per borough to demonstrate revealing subsets of data (by property
-// type) on mouseclick.
+// Example of conveying complexity and designing for aesthetics rather
+// than scientific readability.
 //
-
-// Example of Google Sheet Data restructuring:
-// https://docs.google.com/spreadsheets/d/1A_FmxvY46SKQPS1rcxgacKdTWWmETXXX4NM1ItBHFxc/edit?usp=sharing
 
 // data variables
 var waterPerBoro = {}; // use as object; see https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
