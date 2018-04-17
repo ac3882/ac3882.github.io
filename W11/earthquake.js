@@ -14,7 +14,7 @@ var ACCESS_TOKEN = "pk.eyJ1Ijoia3JhZGVraSIsImEiOiJjamZsYWtxdjEwZzRxMnFtc3c2MXl3b
 
 function preload() {
   mapimg = loadImage('https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/' + clon + ',' + clat + ',' + zoom + '/' + ww + 'x' + hh + '?access_token=' + ACCESS_TOKEN);
-  data = loadStrings('http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv');
+  data = loadStrings('all_month.csv');
 }
 
 // Web Mercator Math
